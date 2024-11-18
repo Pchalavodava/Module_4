@@ -14,9 +14,9 @@ class TaskQueue:
     Класс очереди задач
     """
 
-    def __init__(self):
+    def __init__(self, queue_len: int = 10):
         self.task_list: list[Task] = []
-        self.queue_len: int = 10
+        self.queue_len = queue_len
 
     def add_task(self, task: Task) -> None:
         """
@@ -109,7 +109,7 @@ for my_task in task_list:
     if not queue.is_full():
         queue.add_task(my_task)
 
-print(queue.replace_last_task(Task('Задача 15')))
+print(queue.replace_last_task(Task('Задача 15')).name)
 
 # pprint(queue.task_list)
 
