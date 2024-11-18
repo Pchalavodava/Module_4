@@ -27,23 +27,27 @@ class Deque:
     def size(self):
         return len(self.items)
 
+    def display(self):
+        return list(self.items)
+
 
 deque = Deque()
 
 deque.add_front(1)
-deque.add_rear(2)
-deque.add_front(3)
+print(f'Очередь, после добавления 1 в начало - {deque.display()}')
 
-print(f'Размер очереди {deque.size()}')
+deque.add_rear(2)
+print(f'Очередь, после добавления 2 в конец - {deque.display()}')
+
+deque.add_front(3)
+print(f'Очередь, после добавления 3 в начало - {deque.display()}')
 
 front_element = deque.remove_front()
 print(f'Из начала извлечен элемент {front_element}')
+print(f'Очередь, после извлечения элемента из начала {deque.display()}')
 
-rear_element = deque.remove_rare()
-print(f'Из конца извлечен элемент {rear_element}')
+rare_element = deque.remove_rare()
+print(f'Из конца очереди был извлечен элемент {rare_element}')
+print(f'Очередь, после извлечения элемента с конца {deque.display()}')
 
 print(f'Очередь пуста? {deque.is_empty()}')
-
-
-
-
