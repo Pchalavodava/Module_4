@@ -1,19 +1,19 @@
-def dfs(graph, start, visited=None):
-    if visited is None:
-        visited = set()
-    visited.add(start)
-
-    print(start)
-
-    for next in graph[start] - visited:
-        dfs(graph, next, visited)
-    return visited
+def dfs(graph, vertex, visited):
+    if vertex not in visited:
+        print(vertex, end=' ')
+        visited.append(vertex)
+        for neighbor in graph[vertex]:
+            dfs(graph, neighbor, visited)
 
 
-graph = {'0': set(['1', '2']),
-         '1': set(['0', '3', '4']),
-         '2': set(['0']),
-         '3': set(['1']),
-         '4': set(['2', '3'])}
+graph = {
+    0: [1, 2, 3],
+    1: [0, 2],
+    2: [0, 1, 4],
+    3: [0],
+    4: [2]
+}
 
-dfs(graph, '0')
+visited = []
+dfs(graph, 0, visited)
+
