@@ -14,7 +14,7 @@ class Node:
         :param other: исходящее ребро (узлы, куда ориентирован данный узел
         :return: None
         """
-        self.inbound.append(self)
+        other.inbound.append(self)
         self.outbound.append(other)
 
     def __str__(self) -> str:
