@@ -58,7 +58,7 @@ class Graph:
         if not self.is_empty():
             return self.queue.popleft()
         else:
-            raise 'Очередь пуста'
+            raise Exception('Очередь пуста')
 
     def add_to_queue(self, vertex: Node) -> None:
         """
@@ -81,16 +81,17 @@ class Graph:
         Метод обхода графа в ширину
         :return: list[str]: Список пройденных вершин
         """
-        self.add_to_queue(self._root)
-        while self.queue:
-            vertex = self.get_next_point()
-            self.add_to_visited(vertex)
-            for neighbor in vertex.outbound:
-                if neighbor not in self.visited and neighbor not in self.queue:
-                    self.add_to_queue(neighbor)
+        if not self.visited:
+            self.add_to_queue(self._root)
+            while self.queue:
+                vertex = self.get_next_point()
+                self.add_to_visited(vertex)
+                for neighbor in vertex.outbound:
+                    if neighbor not in self.visited and neighbor not in self.queue:
+                        self.add_to_queue(neighbor)
 
-        self.visited = [str(element) for element in self.visited]
-        return self.visited
+        converted_visited = [str(element) for element in self.visited]
+        return converted_visited
 
 
 # a = Node('a')
@@ -131,4 +132,13 @@ f.point_to(h)
 g.point_to(k)
 
 graph = Graph(a)
+print(graph.bfs())
+print(graph.bfs())
+print(graph.bfs())
+print(graph.bfs())
+print(graph.bfs())
+print(graph.bfs())
+print(graph.bfs())
+print(graph.bfs())
+print('---')
 print(graph.bfs())
